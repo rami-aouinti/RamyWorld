@@ -12,8 +12,10 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.10",
+        "easycorp/easyadmin-bundle": "^3.5",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.1",
+        "stof/doctrine-extensions-bundle": "^1.6",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
@@ -41,9 +43,12 @@
         "symfony/web-link": "5.3.*",
         "symfony/yaml": "5.3.*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "ext-cassandra": "*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "fzaninotto/faker": "^1.5",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
@@ -76,6 +81,18 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "prepare-test": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=test",
+            "php bin/console doctrine:database:create --env=test",
+            "php bin/console doctrine:schema:update --force --env=test",
+            "php bin/console doctrine:fixtures:load -n --env=test"
+        ],
+        "prepare": [
+            "php bin/console doctrine:database:drop --if-exists --force",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:schema:update --force",
+            "php bin/console doctrine:fixtures:load -n"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
