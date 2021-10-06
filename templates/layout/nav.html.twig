@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div class="container">
-        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ asset('dashboard/pages/dashboards/analytics.html') }}">
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ path('home') }}">
             Ramy World
         </a>
         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -673,9 +673,186 @@
                     </div>
                 </li>
             </ul>
-            <ul class="navbar-nav d-lg-block d-none">
-                <li class="nav-item">
-                    <a href="javascript:;" class="btn btn-sm  bg-white  mb-0" onclick="smoothToPricing('pricing-soft-ui')">Buy Now</a>
+            <ul class="navbar-nav  justify-content-end">
+                <li class="nav-item dropdown pe-2">
+                    <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons cursor-pointer">
+                            email
+                        </i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        <li class="mb-2">
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">email</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Check new messages
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">podcasts</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Manage podcast session
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">shopping_cart</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Payment successfully completed
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown pe-2">
+                    <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons cursor-pointer">
+                            notifications
+                        </i>
+                        <span class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
+                  <span class="small">11</span>
+                  <span class="visually-hidden">unread notifications</span>
+                </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        <li class="mb-2">
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">email</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Check new messages
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">podcasts</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Manage podcast session
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <div class="d-flex align-items-center py-1">
+                                    <span class="material-icons">shopping_cart</span>
+                                    <div class="ms-2">
+                                        <h6 class="text-sm font-weight-normal my-auto">
+                                            Payment successfully completed
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown pe-2">
+                    <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons cursor-pointer">
+                            account_circle
+                        </i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        {% if is_granted('ROLE_USER') %}
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">email</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Profile
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">email</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Setting
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">email</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Administration
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ path('app_logout') }}">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">email</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Logout
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ path('app_login') }}">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">login</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Login
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ path('user_registration') }}">
+                                    <div class="d-flex align-items-center py-1">
+                                        <span class="material-icons">login</span>
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                Registration
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </li>
             </ul>
         </div>
