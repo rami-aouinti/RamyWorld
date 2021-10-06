@@ -673,6 +673,12 @@
                     </div>
                 </li>
             </ul>
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <div class="input-group input-group-outline">
+                    <label class="form-label">Search here</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item dropdown pe-2">
                     <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -777,7 +783,7 @@
                     <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
                         {% if is_granted('ROLE_USER') %}
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <a class="dropdown-item border-radius-md" href="{{ path('profile_index') }}">
                                     <div class="d-flex align-items-center py-1">
                                         <span class="material-icons">email</span>
                                         <div class="ms-2">
@@ -789,7 +795,7 @@
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <a class="dropdown-item border-radius-md" href="{{ path('profile_setting') }}">
                                     <div class="d-flex align-items-center py-1">
                                         <span class="material-icons">email</span>
                                         <div class="ms-2">
