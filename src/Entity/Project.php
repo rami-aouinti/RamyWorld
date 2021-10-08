@@ -6,33 +6,41 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
 class Project
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $logo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $active;
+    private ?bool $active;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="projects")
@@ -42,22 +50,22 @@ class Project
     /**
      * @ORM\Column(type="date")
      */
-    private $start_date;
+    private ?\DateTimeInterface $start_date;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $end_date;
+    private ?\DateTimeInterface $end_date;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $file;
+    private ?string $file;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
      */
-    private $author;
+    private ?User $author;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="projects")
@@ -73,6 +81,22 @@ class Project
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string|null $logo
+     */
+    public function setLogo(?string $logo): void
+    {
+        $this->logo = $logo;
     }
 
     public function getName(): ?string

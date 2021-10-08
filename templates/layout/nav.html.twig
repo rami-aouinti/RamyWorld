@@ -15,8 +15,8 @@
             <ul class="navbar-nav navbar-nav-hover mx-auto">
                 <li class="nav-item dropdown dropdown-hover mx-2">
                     <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                        Pages
-                        <img src=" {{ asset('dashboard/assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-1 d-lg-block d-none">
+                        My Space
+                        <img src="{{ asset('dashboard/assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-1 d-lg-block d-none">
                         <img src="{{ asset('dashboard/assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-1 d-lg-none d-block">
                     </a>
                     <div class="dropdown-menu dropdown-menu-animation dropdown-xl p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
@@ -28,8 +28,8 @@
                                             <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
                                             Dashboards
                                         </div>
-                                        <a href="{{ asset('dashboard/pages/dashboards/analytics.html') }}" class="dropdown-item border-radius-md">
-                                            <span class="ps-2">Analytics</span>
+                                        <a href="{{ path('project_index') }}" class="dropdown-item border-radius-md">
+                                            <span class="ps-2">Projects</span>
                                         </a>
                                         <a href="{{ asset('dashboard/pages/dashboards/discover.html') }}" class="dropdown-item border-radius-md">
                                             <span class="ps-2">Discover</span>
@@ -730,43 +730,33 @@
                         <i class="material-icons cursor-pointer">
                             notifications
                         </i>
+                        {% if (UserNotification.collection().notification_unread > 0) %}
                         <span class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
-                  <span class="small">11</span>
+                  <span class="small">{{ UserNotification.collection().notification_unread }}</span>
                   <span class="visually-hidden">unread notifications</span>
+                        {% endif %}
                 </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
-                                <div class="d-flex align-items-center py-1">
-                                    <span class="material-icons">email</span>
-                                    <div class="ms-2">
-                                        <h6 class="text-sm font-weight-normal my-auto">
-                                            Check new messages
-                                        </h6>
+                        {% for notification in UserNotification.collection().notifications %}
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center py-1">
+                                        <div class="ms-2">
+                                            <h6 class="text-sm font-weight-normal my-auto">
+                                                {{ notification.name }}
+                                            </h6>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        {% endfor %}
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <a class="dropdown-item border-radius-md" href="{{ path('notification') }}">
                                 <div class="d-flex align-items-center py-1">
-                                    <span class="material-icons">podcasts</span>
                                     <div class="ms-2">
                                         <h6 class="text-sm font-weight-normal my-auto">
-                                            Manage podcast session
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
-                                <div class="d-flex align-items-center py-1">
-                                    <span class="material-icons">shopping_cart</span>
-                                    <div class="ms-2">
-                                        <h6 class="text-sm font-weight-normal my-auto">
-                                            Payment successfully completed
+                                            All Notification
                                         </h6>
                                     </div>
                                 </div>
@@ -795,7 +785,7 @@
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="{{ path('profile_setting') }}">
+                                <a class="dropdown-item border-radius-md" href="{{ path('profile_edit', {'id': app.user.profile.id}) }}">
                                     <div class="d-flex align-items-center py-1">
                                         <span class="material-icons">email</span>
                                         <div class="ms-2">

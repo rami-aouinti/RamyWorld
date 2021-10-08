@@ -3,9 +3,132 @@
 {% block title %}New Project{% endblock %}
 
 {% block body %}
-    <h1>Create new Project</h1>
+    {{ form_start(form) }}
+    <div class="row mt-4">
+    <div class="col-lg-9 col-12 mx-auto position-relative">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 me-3 float-start">
+                    <i class="material-icons opacity-10">event</i>
+                </div>
+                <h6 class="mb-0">New Project</h6>
+            </div>
+            <div class="card-body pt-2">
+                <div class="input-group input-group-dynamic">
+                    {{ form_row(form.name) }}
+                </div>
+                <label class="mt-4">Add Logo (Optional)</label>
+                <div class="input-group input-group-dynamic">
+                    {{ form_row(form.logo) }}
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Private Project
+                            </label>
+                            <p class="form-text text-muted ms-1">
+                                If you are available for hire outside of the current situation, you can encourage others to hire you.
+                            </p>
+                            <div class="form-check form-switch ms-1">
+                                {{ form_row(form.active) }}
+                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label class="mt-4">Project Description</label>
+                <p class="form-text text-muted ms-1">
+                    This is how others will learn about the project, so make it good!
+                </p>
 
-    {{ include('project/_form.html.twig') }}
+                {{ form_row(form.description) }}
+                <label class="mt-4 form-label">Project Tags</label>
+                {{ form_row(form.tag) }}
 
-    <a href="{{ path('project_index') }}">back to list</a>
+                <label class="mt-4">Add Times</label>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group input-group-static">
+                            <label>Start Date</label>
+                            {{ form_row(form.start_date) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group input-group-static">
+                            <label>End Date</label>
+                            {{ form_row(form.end_date) }}
+                        </div>
+                    </div>
+                </div>
+                <label class="mt-4">Add Files (Optional)</label>
+                {{ form_row(form.file) }}
+                <label class="mt-4">Add Members</label>
+                {{ form_row(form.team) }}
+                <div class="d-flex justify-content-end mt-4">
+                    <a href="{{ path('project_index') }}" type="button" name="button" class="btn btn-light m-0">Cancel</a>
+                    <button type="submit" name="button" class="btn bg-gradient-dark m-0 ms-2">Create Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('dashboard/assets/js/plugins/choices.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/plugins/quill.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/plugins/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/plugins/dropzone.min.js') }}"></script>
+    <script>
+        if (document.getElementById('editor')) {
+            var quill = new Quill('#editor', {
+                theme: 'snow' // Specify theme in configuration
+            });
+        }
+
+        if (document.getElementById('choices-multiple-remove-button')) {
+            var element = document.getElementById('choices-multiple-remove-button');
+            const example = new Choices(element, {
+                removeItemButton: true
+            });
+
+            example.setChoices(
+                [{
+                    value: 'One',
+                    label: 'Label One',
+                    disabled: true
+                },
+                    {
+                        value: 'Two',
+                        label: 'Label Two',
+                        selected: true
+                    },
+                    {
+                        value: 'Three',
+                        label: 'Label Three'
+                    },
+                ],
+                'value',
+                'label',
+                false,
+            );
+        }
+
+        if (document.querySelector('.datetimepicker')) {
+            flatpickr('.datetimepicker', {
+                allowInput: true
+            }); // flatpickr
+        }
+
+        Dropzone.autoDiscover = false;
+        var drop = document.getElementById('dropzone')
+        var myDropzone = new Dropzone(drop, {
+            url: "/file/post",
+            addRemoveLinks: true
+
+        });
+    </script>
 {% endblock %}
