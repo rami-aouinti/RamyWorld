@@ -23,6 +23,16 @@ class Profile
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private ?string $title= null;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $description= null;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private ?string $firstname = null;
 
     /**
@@ -79,7 +89,6 @@ class Profile
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $instagram = null;
-
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="profile", cascade={"persist", "remove"})
@@ -193,6 +202,38 @@ class Profile
     public function setPostCode(?int $post_code): void
     {
         $this->post_code = $post_code;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 
     /**

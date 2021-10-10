@@ -121,8 +121,47 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.1.0"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.3.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.5.0"
+    },
+    "guzzlehttp/psr7": {
+        "version": "2.1.0"
+    },
+    "jakeasmith/http_build_url": {
+        "version": "1.0.1"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "1ff300d8c030f55c99219cc55050b97a695af3f6"
+        },
+        "files": [
+            "config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
     "laminas/laminas-code": {
         "version": "4.4.3"
+    },
+    "league/oauth2-client": {
+        "version": "2.6.0"
+    },
+    "league/oauth2-facebook": {
+        "version": "2.0.5"
+    },
+    "league/oauth2-github": {
+        "version": "3.0.0"
+    },
+    "league/oauth2-google": {
+        "version": "4.0.0"
+    },
+    "league/oauth2-instagram": {
+        "version": "3.0.0"
     },
     "monolog/monolog": {
         "version": "2.3.5"
@@ -132,6 +171,12 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.0"
+    },
+    "omines/oauth2-gitlab": {
+        "version": "3.4.0"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.100"
     },
     "phar-io/manifest": {
         "version": "2.0.3"
@@ -189,11 +234,23 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.1.1"
     },
     "psr/log": {
         "version": "2.0.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -545,6 +602,15 @@
     "symfony/security-http": {
         "version": "v5.3.8"
     },
+    "symfony/sendgrid-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "b46e4f8f1adb2864f0aa9c0ff57aea3324a07199"
+        }
+    },
     "symfony/serializer": {
         "version": "v5.3.8"
     },
@@ -630,6 +696,9 @@
     },
     "symfony/yaml": {
         "version": "v5.3.6"
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.5.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

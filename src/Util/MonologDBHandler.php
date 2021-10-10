@@ -39,14 +39,7 @@ class MonologDBHandler extends AbstractProcessingHandler
         $logEntry->setLevelName($record['level_name']);
         $logEntry->setExtra($record['extra']);
         $logEntry->setContext($record['context']);
-        //dd($this->em->isOpen());
-        if (!$this->em->isOpen()) {
-            $this->em = $this->em->create(
-                $this->em->getConnection(),
-                $this->em->getConfiguration()
-            );
-        }
-        $this->em->persist($logEntry);
-        $this->em->flush();
+        //$this->em->persist($logEntry);
+        //$this->em->flush();
     }
 }

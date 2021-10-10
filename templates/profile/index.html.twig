@@ -3,12 +3,11 @@
 {% block title %}Profile index{% endblock %}
 
 {% block body %}
-    <div class="container-fluid px-2 px-md-4">
-        <div class="card card-body mx-3 mx-md-4 mt-n6">
+        <div class="card card-body">
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="{{ asset('dashboard/assets/img/bruce-mars.jpg') }}" alt="profile_image" class="w-100 rounded-circle shadow-sm">
+                        <img src="{{ app.user.profile.image }}" alt="profile_image" class="w-100 rounded-circle shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -363,5 +362,4 @@
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}

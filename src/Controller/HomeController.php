@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Psr\Log\LoggerInterface;
 use Monolog\Logger;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class HomeController extends AbstractController
 {
@@ -24,8 +26,21 @@ class HomeController extends AbstractController
     }
 
     #[Route('/home', name: 'home')]
-    public function index(): Response
+    public function index(MailerInterface $mailer): Response
     {
+        $email = (new Email())
+            ->from('ramideveloper5@gmail.com')
+            ->to('rami.aouinti@gmail.com')
+            //->cc('cc@example.com')
+            //->bcc('bcc@example.com')
+            //->replyTo('fabien@example.com')
+            //->priority(Email::PRIORITY_HIGH)
+            ->subject('Time for Symfony Mailer!')
+            ->text('Sending emails is fun again!')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
+
+        $mailer->send($email);
+
         //$logger = new Logger('doctrine');
         //$logger->info('Information message');
         return $this->render('home/index.html.twig', [

@@ -6,12 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -60,6 +62,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="sender")
      */
     private $messages;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVerified = false;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private ?string $googleId;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private ?string $githubId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="github_access_token", type="string", length=255, nullable=true, options={"default"="NULL"})
+     */
+    private ?string $githubAccessToken;
 
     public function __toString(): string
     {
@@ -272,5 +298,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param string|null $googleId
+     */
+    public function setGoogleId(?string $googleId): void
+    {
+        $this->googleId = $googleId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGithubId(): ?string
+    {
+        return $this->githubId;
+    }
+
+    /**
+     * @param string|null $githubId
+     */
+    public function setGithubId(?string $githubId): void
+    {
+        $this->githubId = $githubId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGithubAccessToken(): ?string
+    {
+        return $this->githubAccessToken;
+    }
+
+    /**
+     * @param string|null $githubAccessToken
+     */
+    public function setGithubAccessToken(?string $githubAccessToken): void
+    {
+        $this->githubAccessToken = $githubAccessToken;
     }
 }

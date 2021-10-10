@@ -30,6 +30,10 @@ services:
         class: App\Service\Notification
         public: true
 
+    User.Profile:
+        class: App\Service\ShowProfile
+        public: true
+
     monolog.db_handler:
         class: App\Util\MonologDBHandler
         arguments: [ '@doctrine.orm.entity_manager' ]

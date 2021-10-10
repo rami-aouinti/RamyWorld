@@ -101,14 +101,20 @@ class ProfileController extends AbstractController
         $profile = $profileRepository->findOneBy([
             'user' => $this->security->getUser()
         ]);
-
+        $profile->setTitle($request->request->get('title'));
         $profile->setFirstname($request->request->get('firstname'));
         $profile->setLastname($request->request->get('lastname'));
         $profile->setStreet($request->request->get('street'));
         $profile->setStreetNumber($request->request->get('street_number'));
         $profile->setState($request->request->get('state'));
         $profile->setCountry($request->request->get('choices-country'));
-        //$profile->setImage($this->uploadFile->upload($form->get('image')->getData(), 'profile_image'));
+        $profile->setDescription($request->request->get('description'));
+        $profile->setMobile($request->request->get('mobile'));
+        $profile->setFacebook($request->request->get('facebook'));
+        $profile->setTwitter($request->request->get('twitter'));
+        $profile->setInstagram($request->request->get('instagram'));
+        $profile->setPostCode($request->request->get('postcode'));
+        //$profile->setImage($this->uploadFile->upload($request->request->get('image')->getData(), 'profile_image'));
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('profile_index', [], Response::HTTP_SEE_OTHER);
     }
