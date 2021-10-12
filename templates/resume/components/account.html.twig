@@ -1,0 +1,87 @@
+<div class="multisteps-form__panel js-active" data-animation="FadeIn">
+    <div class="row text-center mt-4">
+        <div class="col-10 mx-auto">
+            <h5 class="font-weight-normal">Let's start with the basic information</h5>
+            <p>Let us know your name and email address. Use an address you don't mind other users contacting you at</p>
+        </div>
+    </div>
+    <div class="multisteps-form__content">
+        <div class="row mt-3">
+            <div class="col-12 col-sm-4">
+                <div class="avatar avatar-xxl position-relative">
+                    <img src="{{ asset('dashboard/assets/img/team-2.jpg') }}" class="border-radius-md" alt="team-2">
+                    <a href="#"  onclick="performClick('theFile');" class="btn btn-sm btn-icon-only bg-gradient-primary position-absolute bottom-0 end-0 mb-n2 me-n2">
+                                  <span class="material-icons text-xs top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image">
+                                    edit
+                                  </span>
+                    </a>
+                </div>
+                <input hidden type="file" id="theFile" name="image" />
+            </div>
+            <div class="col-12 col-sm-8 mt-4 mt-sm-0 text-start">
+                <div class="col-12 ms-auto mt-3 text-start">
+
+                    <div>
+                        <select class="form-control text-warning" name="title" id="title">
+                            <option value="Prof">Prof</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Student">Student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group input-group-dynamic mb-4">
+
+                </div>
+                <div class="input-group input-group-dynamic mb-2">
+                    <input type="text" value="{{ app.user.profile.firstname }}" name="firstname" class="form-control multisteps-form__input text-warning" placeholder="First Name">
+                    <input type="text" value="{{ app.user.profile.lastname }}" name="lastname" class="form-control multisteps-form__input text-warning" placeholder="Last Name">
+                </div>
+                <div class="input-group input-group-dynamic">
+                    <input type="email" value="{{ app.user.email }}" name="email" class="form-control multisteps-form__input text-warning" disabled placeholder="Email Address">
+                </div>
+                <div class="row text-start">
+                    <div class="col-12 col-md-8 mt-3">
+                        <div class="input-group input-group-static">
+                            <label>Street Name</label>
+                            <input type="text" value="{{ app.user.profile.street }}" name="street" class="form-control multisteps-form__input text-warning">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mt-3">
+                        <div class="input-group input-group-static">
+                            <label>Street No</label>
+                            <input value="{{ app.user.profile.streetNumber }}" name="street_number" class="multisteps-form__input form-control text-warning" type="number" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 mt-3">
+                        <div class="input-group input-group-static">
+                            <label>PostCode</label>
+                            <input value="{{ app.user.profile.postcode }}" name="postcode" class="multisteps-form__input form-control text-warning" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mt-3">
+                        <div class="input-group input-group-static">
+                            <label>City</label>
+                            <input value="{{ app.user.profile.state }}" name="state" class="multisteps-form__input form-control text-warning" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 ms-auto mt-3 text-start">
+                        <div>
+                            <label class="form-label mb-0 ms-0">Country</label>
+                            <select class="form-control text-warning" value="{{ app.user.profile.country }}" name="choices-country" id="choices-country">
+                                <option value="Argentina">Argentina</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
+                                <option value="Andorra">Andorra</option>
+                                <option value="Angola">Angola</option>
+                                <option value="Brasil">Brasil</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-row d-flex mt-4">
+            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+        </div>
+    </div>
+</div>

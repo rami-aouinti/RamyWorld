@@ -249,6 +249,9 @@
     "psr/log": {
         "version": "2.0.0"
     },
+    "qipsius/tcpdf-bundle": {
+        "version": "2.0.2"
+    },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
@@ -324,6 +327,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.3.7"
+    },
     "symfony/asset": {
         "version": "v5.3.4"
     },
@@ -373,6 +379,9 @@
         "version": "v2.4.0"
     },
     "symfony/doctrine-bridge": {
+        "version": "v5.3.8"
+    },
+    "symfony/doctrine-messenger": {
         "version": "v5.3.8"
     },
     "symfony/dom-crawler": {
@@ -469,6 +478,18 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "25e3c964d3aee480b3acc3114ffb7940c89edfed"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/mime": {
         "version": "v5.3.8"
     },
@@ -561,6 +582,9 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v5.3.4"
+    },
+    "symfony/redis-messenger": {
+        "version": "v5.3.8"
     },
     "symfony/routing": {
         "version": "5.3",
@@ -700,10 +724,16 @@
     "symfonycasts/verify-email-bundle": {
         "version": "v1.5.0"
     },
+    "tecnickcom/tcpdf": {
+        "version": "6.4.2"
+    },
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
     "twig/extra-bundle": {
+        "version": "v3.3.3"
+    },
+    "twig/intl-extra": {
         "version": "v3.3.3"
     },
     "twig/twig": {

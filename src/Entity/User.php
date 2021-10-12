@@ -122,6 +122,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $resumes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="user")
+     */
+    private $events;
+
     public function __toString(): string
     {
         return $this->email;
@@ -139,6 +144,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->languages = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
         $this->resumes = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -606,6 +612,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($resume->getUser() === $this) {
                 $resume->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
             }
         }
 

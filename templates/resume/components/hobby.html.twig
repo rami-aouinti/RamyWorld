@@ -1,0 +1,27 @@
+<!--single form panel-->
+<div class="multisteps-form__panel" id="body-hobby" data-animation="FadeIn">
+    <div class="row text-center mt-4">
+        <div class="col-10 mx-auto">
+            <h5 class="font-weight-normal">Add your hobbies here</h5>
+        </div>
+    </div>
+    <div class="multisteps-form__content">
+        <div class="row text-start">
+            <div class="col-12 col-md-8 mt-3">
+                <div class="input-group input-group-dynamic">
+                    <input type="text" value="{{ app.user.email }}" name="hobby" class="form-control multisteps-form__input text-warning" placeholder="Hobby">
+                </div>
+            </div>
+            <div id="container"/>
+        </div>
+        <div class="col-12 col-md-4 mt-3" id="add-hobby">
+            <a href="javascript:;" id="filldetails" class="btn bg-warning ms-auto mb-0" onclick="addFields()">Add New Hobby</a>
+        </div>
+        <div class="row">
+            <div class="button-row d-flex mt-4 col-12">
+                <button class="btn btn-outline-dark mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
+                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>
+            </div>
+        </div>
+    </div>
+</div>

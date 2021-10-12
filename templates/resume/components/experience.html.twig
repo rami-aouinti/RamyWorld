@@ -1,0 +1,19 @@
+<!--single form panel-->
+<div class="multisteps-form__panel" data-animation="FadeIn">
+    <div class="row text-center mt-4">
+        <div class="col-10 mx-auto">
+            <h5 class="font-weight-normal">Description</h5>
+        </div>
+    </div>
+    <div class="multisteps-form__content">
+        <div class="input-group input-group-dynamic">
+                                                <textarea   name="description" class="form-control multisteps-form__input text-warning" rows="4" cols="50" placeholder="Description">
+                                                    {{ app.user.profile.description }}
+                                                </textarea>
+        </div>
+        <div class="button-row d-flex mt-4">
+            <button class="btn btn-outline-dark mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
+            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+        </div>
+    </div>
+</div>

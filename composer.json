@@ -20,6 +20,7 @@
         "league/oauth2-instagram": "^3.0",
         "omines/oauth2-gitlab": "^3.4",
         "phpdocumentor/reflection-docblock": "^5.2",
+        "qipsius/tcpdf-bundle": "^2.0",
         "sensio/framework-extra-bundle": "^6.1",
         "stof/doctrine-extensions-bundle": "^1.6",
         "symfony/asset": "5.3.*",
@@ -32,6 +33,7 @@
         "symfony/http-client": "5.3.*",
         "symfony/intl": "5.3.*",
         "symfony/mailer": "5.3.*",
+        "symfony/messenger": "5.3.*",
         "symfony/mime": "5.3.*",
         "symfony/monolog-bundle": "^3.7",
         "symfony/notifier": "5.3.*",
@@ -51,6 +53,7 @@
         "symfony/yaml": "5.3.*",
         "symfonycasts/verify-email-bundle": "^1.5",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.3",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {

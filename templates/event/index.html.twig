@@ -1,0 +1,253 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12 ms-auto">
+                <div class="d-flex mb-4">
+                    <div class="pe-4 mt-1 position-relative ms-auto">
+                        <p class="text-secondary text-sm mb-2">Team members:</p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="avatar-group">
+                                <a href="javascript:;" class="avatar avatar-sm rounded-circle" data-bs-toggle="tooltip" title="Jessica Rowland">
+                                    <img alt="Image placeholder" src="../../assets/img/team-1.jpg" class="">
+                                </a>
+                                <a href="javascript:;" class="avatar avatar-sm rounded-circle" data-bs-toggle="tooltip" title="Audrey Love">
+                                    <img alt="Image placeholder" src="../../assets/img/team-2.jpg" class="rounded-circle">
+                                </a>
+                                <a href="javascript:;" class="avatar avatar-sm rounded-circle" data-bs-toggle="tooltip" title="Michael Lewis">
+                                    <img alt="Image placeholder" src="../../assets/img/team-3.jpg" class="rounded-circle">
+                                </a>
+                                <a href="javascript:;" class="avatar avatar-sm rounded-circle" data-bs-toggle="tooltip" title="Lucia Linda">
+                                    <img alt="Image placeholder" src="../../assets/img/team-4.jpg" class="rounded-circle">
+                                </a>
+                                <a href="javascript:;" class="avatar avatar-sm rounded-circle" data-bs-toggle="tooltip" title="Ronald Miller">
+                                    <img alt="Image placeholder" src="../../assets/img/team-5.jpg" class="rounded-circle">
+                                </a>
+                            </div>
+                        </div>
+                        <hr class="vertical dark mt-0">
+                    </div>
+                    <div class="ps-4">
+                        {{ include('event/components/event_modal.html.twig') }}
+                        {{ include('event/components/event_type_modal.html.twig') }}
+                        {{ include('event/components/event_modal_show.html.twig') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9">
+                <div class="card card-calendar">
+                    <div class="card-body p-3">
+                        <div class="calendar" data-bs-toggle="calendar" id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <div class="row">
+                    <div class="col-xl-12 col-md-6 mt-xl-0 mt-4">
+                        <div class="card">
+                            <div class="card-header p-3 pb-0">
+                                <h6 class="mb-0">Next events</h6>
+                            </div>
+                            <div class="card-body border-radius-lg p-3">
+                                {% for event in events %}
+                                    <div class="d-flex mt-4">
+                                        <div class="icon icon-shape bg-gradient-dark shadow text-center">
+                                            <i class="material-icons opacity-10 pt-1">attach_money</i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <div class="numbers">
+                                                <h6 class="mb-1 text-dark text-sm"> {{ event.title}} </h6>
+                                                <span class="text-sm">{{ event.startDate|format_datetime() }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="d-flex mt-4">
+                                    <div class="icon icon-shape bg-gradient-dark shadow text-center">
+                                        <i class="material-icons opacity-10 pt-1">notifications</i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="numbers">
+                                            <h6 class="mb-1 text-dark text-sm">Meeting with Marry</h6>
+                                            <span class="text-sm">24 March 2021, at 10:00 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-4">
+                                    <div class="icon icon-shape bg-gradient-dark shadow text-center">
+                                        <i class="material-icons opacity-10 pt-1">auto_stories</i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="numbers">
+                                            <h6 class="mb-1 text-dark text-sm">Book Deposit Hall</h6>
+                                            <span class="text-sm">25 March 2021, at 9:30 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-4">
+                                    <div class="icon icon-shape bg-gradient-dark shadow text-center">
+                                        <i class="material-icons opacity-10 pt-1">local_shipping</i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="numbers">
+                                            <h6 class="mb-1 text-dark text-sm">Shipment Deal UK</h6>
+                                            <span class="text-sm">25 March 2021, at 2:00 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-4">
+                                    <div class="icon icon-shape bg-gradient-dark shadow text-center">
+                                        <i class="material-icons opacity-10 pt-1">palette</i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="numbers">
+                                            <h6 class="mb-1 text-dark text-sm">Verify Dashboard Color Palette</h6>
+                                            <span class="text-sm">26 March 2021, at 9:00 AM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('dashboard/assets/js/plugins/fullcalendar.min.js') }}"></script>
+    <!-- Kanban scripts -->
+    <script src="{{ asset('dashboard/assets/js/plugins/chartjs.min.js') }}"></script>
+    <script>
+        var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+            contentHeight: 700,
+            initialView: "dayGridMonth",
+            customButtons: {
+                eventButton: {
+                    text: 'New Event',
+                    click: function() {
+                        $('#modal-form').modal('show');
+                    }
+                },
+                eventType: {
+                    text: 'New Label',
+                    click: function() {
+                        $('#modal-form-type').modal('show');
+                    }
+                }
+            },
+            headerToolbar: {
+                start: 'prev,next today eventType eventButton',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+            selectable: true,
+            events: {{ data|raw }},
+            editable: true,
+            eventResizableFromStart: true,
+            views: {
+                month: {
+                    titleFormat: {
+                        month: "long",
+                        year: "numeric"
+                    }
+                },
+                agendaWeek: {
+                    titleFormat: {
+                        month: "long",
+                        year: "numeric",
+                        day: "numeric"
+                    }
+                },
+                agendaDay: {
+                    titleFormat: {
+                        month: "short",
+                        year: "numeric",
+                        day: "numeric"
+                    }
+                }
+            },
+            eventClick: function(info) {
+                console.log(info.event);
+                $("h5").html(info.event.title);
+                $("p").html(info.event.description);
+                $("event").html("<p contenteditable='true'>"  + info.event.start + "</p>");
+                $('#modal-form-show').modal('show');
+
+                //$('#modal-form-show').find(".card-body").text(info.event.tile);
+
+            }
+        });
+
+        calendar.on('eventChange', (e) => {
+            let url = `/api/${e.event.id}/edit`
+            let donnees = {
+                "title": e.event.title,
+                "description": e.event.extendedProps.description,
+                "start": e.event.start,
+                "end": e.event.end,
+                "backgroundColor": e.event.backgroundColor,
+                "borderColor": e.event.borderColor,
+                "textColor": e.event.textColor,
+                "allDay": e.event.allDay
+            }
+
+            let xhr = new XMLHttpRequest
+
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
+        })
+        calendar.render();
+        function addNewEvent() {
+            console.log(document.getElementById("myForm").elements["type"].value)
+            let url = `/api/new`
+            let donnees = {
+                "title": document.getElementById("myForm").elements["title"].value,
+                "description": document.getElementById("myForm").elements["description"].value,
+                "start": document.getElementById("myForm").elements["startDate"].value,
+                "end": document.getElementById("myForm").elements["endDate"].value,
+                "type": document.getElementById("myForm").elements["type"].value,
+                "allDay": true
+            }
+
+            let xhr = new XMLHttpRequest
+
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form').modal('toggle');
+            this.updateCalendar();
+        }
+
+        function updateCalendar() {
+            calendar.refetchEvents();
+        }
+
+
+        function addNewEventType() {
+            let url = `/api/new/type`
+            let donnees = {
+                "name": document.getElementById("myFormType").elements["name"].value,
+                "backgroundColor": document.getElementById("myFormType").elements["backgroundColor"].value,
+                "borderColor": document.getElementById("myFormType").elements["borderColor"].value,
+                "textColor": document.getElementById("myFormType").elements["textColor"].value
+            }
+
+            let xhr = new XMLHttpRequest
+
+            xhr.onreadystatechange = function(data) {
+                if (this.status === 200) {
+                    console.log(data)
+                }
+            };
+
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form-type').modal('toggle');
+        }
+    </script>
+{% endblock %}

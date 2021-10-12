@@ -39,3 +39,5 @@ services:
         class: App\Util\MonologDBHandler
         arguments: [ '@doctrine.orm.entity_manager' ]
 
+    Qipsius\TCPDFBundle\Controller\TCPDFController: '@qipsius.tcpdf'
+
