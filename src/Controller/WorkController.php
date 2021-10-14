@@ -45,7 +45,6 @@ class WorkController extends AbstractController
             $work = new Work();
             $work->setUser($this->security->getUser());
             $code = 201;
-            $level = substr($donnees->level, 0, 2);
 
             // Save in Database
             $work->setName($donnees->name);

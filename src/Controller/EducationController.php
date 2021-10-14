@@ -40,7 +40,7 @@ class EducationController extends AbstractController
         // Collect data
         $donnees = json_decode($request->getContent());
 
-        if(isset($donnees->name) && !empty($donnees->name))
+        if(isset($donnees->school) && !empty($donnees->school))
         {
             $education = new Education();
             $education->setUser($this->security->getUser());

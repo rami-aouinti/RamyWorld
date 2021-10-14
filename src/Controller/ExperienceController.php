@@ -40,7 +40,7 @@ class ExperienceController extends AbstractController
         // Collect data
         $donnees = json_decode($request->getContent());
 
-        if(isset($donnees->name) && !empty($donnees->name))
+        if(isset($donnees->company) && !empty($donnees->company))
         {
             $experience = new Experience();
             $experience->setUser($this->security->getUser());

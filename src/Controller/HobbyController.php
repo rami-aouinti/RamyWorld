@@ -44,7 +44,6 @@ class HobbyController extends AbstractController
             $hobby = new Hobby();
             $hobby->setUser($this->security->getUser());
             $code = 201;
-            $level = substr($donnees->level, 0, 2);
 
             // Save in Database
             $hobby->setName($donnees->name);

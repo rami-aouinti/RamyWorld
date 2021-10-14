@@ -107,8 +107,8 @@
                 "name": document.getElementById("projectForm").elements["name"].value,
                 "description": document.getElementById("projectForm").elements["description"].value,
                 "repository": document.getElementById("projectForm").elements["repository"].value,
-                "startDate": document.getElementById("myFormTask").elements["startDate"].value,
-                "endDate": document.getElementById("myFormTask").elements["endDate"].value
+                "startDate": document.getElementById("projectForm").elements["startDate"].value,
+                "endDate": document.getElementById("projectForm").elements["endDate"].value
             }
             let xhr = new XMLHttpRequest
 
@@ -121,8 +121,8 @@
                             "<div class='row'>" +
                             "<div class='col-md-4'>" + document.getElementById("projectForm").elements["name"].value + "</div>" +
                             "<div class='col-md-6'>" + document.getElementById("projectForm").elements["repository"].value + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
                             "</div>" );
                     document.getElementById("projectForm").reset();
                 }
@@ -170,8 +170,8 @@
                 "company": document.getElementById("experienceForm").elements["company"].value,
                 "title": document.getElementById("experienceForm").elements["title"].value,
                 "description": document.getElementById("experienceForm").elements["description"].value,
-                "startDate": document.getElementById("myFormTask").elements["startDate"].value,
-                "endDate": document.getElementById("myFormTask").elements["endDate"].value
+                "startDate": document.getElementById("experienceForm").elements["startDate"].value,
+                "endDate": document.getElementById("experienceForm").elements["endDate"].value
             }
             let xhr = new XMLHttpRequest
 
@@ -184,8 +184,8 @@
                             "<div class='row'>" +
                             "<div class='col-md-4'>" + document.getElementById("experienceForm").elements["title"].value + "by" + "</div>" +
                             "<div class='col-md-6'>" + document.getElementById("experienceForm").elements["company"].value + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
                             "</div>" );
                     document.getElementById("experienceForm").reset();
                 }
@@ -203,13 +203,10 @@
                 "school": document.getElementById("educationForm").elements["school"].value,
                 "grad": document.getElementById("educationForm").elements["grad"].value,
                 "description": document.getElementById("educationForm").elements["description"].value,
-                "startDate": document.getElementById("myFormTask").elements["startDate"].value,
-                "endDate": document.getElementById("myFormTask").elements["endDate"].value
+                "startDate": document.getElementById("educationForm").elements["startDate"].value,
+                "endDate": document.getElementById("educationForm").elements["endDate"].value
             }
             let xhr = new XMLHttpRequest
-
-            let levelValue = document.getElementById("skillForm").elements["level"].value;
-            let level = parseInt(levelValue.substring(0, 2));
 
             xhr.onload = function() {
                 if (xhr.status === 200) {
@@ -220,8 +217,8 @@
                             "<div class='row'>" +
                             "<div class='col-md-4'>" + document.getElementById("educationForm").elements["school"].value + "</div>" +
                             "<div class='col-md-6'>" + document.getElementById("educationForm").elements["grad"].value + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
-                            "<div class='col-md-2'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-warning btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>edit</i></span> </button>" + "</div>" +
+                            "<div class='col-md-1'>" + "<button class='btn btn-icon btn-danger btn-sm' type='button'> <span class='btn-inner--icon'><i class='material-icons'>delete</i></span> </button>" + "</div>" +
                             "</div>" );
                     document.getElementById("educationForm").reset();
                 }
