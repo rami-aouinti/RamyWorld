@@ -173,7 +173,6 @@
                 }
             },
             eventClick: function(info) {
-                console.log(info.event);
                 $("h5").html(info.event.title);
                 $("p").html(info.event.description);
                 $("event").html("<p contenteditable='true'>"  + info.event.start + "</p>");

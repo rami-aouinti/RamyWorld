@@ -4,54 +4,283 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-12 text-center">
-            <h3 class="mt-5">Build Your Resume</h3>
-            <h5 class="font-weight-normal opacity-6">This information will let us know more about you.</h5>
-            <div class="multisteps-form mb-5">
-                <!--progress bar-->
-                <div class="row">
-                    <div class="col-12 col-lg-8 mx-auto my-5">
-                        <div class="card" id="myCard">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <div class="multisteps-form__progress">
-                                        <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
-                                            <span>Information</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>Education</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>Experience</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>Skill</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>Project</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>Language</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Order Info">
-                                            <span>Hobby</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <form action="{{ path('resume_save') }}" method="post" class="multisteps-form__form">
-                                    {{ include('resume/components/account.html.twig') }}
-                                    {{ include('resume/components/education.html.twig') }}
-                                    {{ include('resume/components/experience.html.twig') }}
-                                    {{ include('resume/components/skill.html.twig') }}
-                                    {{ include('resume/components/project.html.twig') }}
-                                    {{ include('resume/components/language.html.twig') }}
-                                    {{ include('resume/components/hobby.html.twig') }}
-                                </form>
-                            </div>
-                        </div>
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-lg">
+                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Education</span>
+                <div class="card-header text-center pt-4 pb-3">
+                    <h1 class="font-weight-bold mt-2">
+                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">2 team members</span>
                     </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">20GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                        Join
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Skills</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-lg">
+                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Experiences</span>
+                <div class="card-header text-center pt-4 pb-3">
+                    <h1 class="font-weight-bold mt-2">
+                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">2 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">20GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                        Join
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Languages</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-lg">
+                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Projects</span>
+                <div class="card-header text-center pt-4 pb-3">
+                    <h1 class="font-weight-bold mt-2">
+                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">2 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">20GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                        Join
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Hobbies</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -63,67 +292,4 @@
     <script src="{{ asset('dashboard/assets/js/plugins/choices.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/plugins/dropzone/dist/min/dropzone.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/plugins/quill.min.js') }}"></script>
-    <script type="text/javascript">
-        function performClick(elemId) {
-            var elem = document.getElementById(elemId);
-            if(elem && document.createEvent) {
-                var evt = document.createEvent("MouseEvents");
-                evt.initEvent("click", true, false);
-                elem.dispatchEvent(evt);
-            }
-        }
-    </script>
-    <script type='text/javascript'>
-        function addFields(){
-            var container = document.getElementById("container");
-                // Create an <input> element, set its type and name attributes
-            var elemParentInput = document.createElement('div');
-            var elemChild = document.createElement('div');
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "hobby";
-            elemChild.appendChild(input).className = "form-control multisteps-form__input text-warning";
-            elemChild.appendChild(input).placeholder = "New Hobby";
-
-            elemParentInput.appendChild(elemChild).className = "input-group input-group-dynamic";
-            elemParentInput.appendChild(elemChild);
-
-            container.appendChild(elemParentInput).className = "col-12 col-md-8 mt-3";
-            container.appendChild(elemParentInput);
-
-            var card = document.getElementById("myCard");
-            var cardHeightEducationBasis = 400;
-            var cardHeightExperienceBasis = 400;
-            var cardHeightSkillBasis = 400;
-            var cardHeightProjectBasis = 400;
-            var cardHeightLanguageBasis = 400;
-            var cardHeightHobbyBasis = 400;
-
-            card.style.height = (cardHeightEducationBasis + 55) + "px";
-        }
-        window.addEventListener('resize', addFields);
-    </script>
-    <script>
-        if (document.getElementById('choices-country')) {
-            var country = document.getElementById('choices-country');
-            const example = new Choices(country);
-        }
-
-        var openFile = function(event) {
-            var input = event.target;
-
-            var evt = document.createEvent("MouseEvents");
-            evt.initEvent("click", true, false);
-            this.dispatchEvent(evt);
-
-            // Instantiate FileReader
-            var reader = new FileReader();
-            reader.onload = function() {
-                imageFile = reader.result;
-
-                document.getElementById("imageChange").innerHTML = '<img width="200" src="' + imageFile + '" class="rounded-circle w-100 shadow" />';
-            };
-            reader.readAsDataURL(input.files[0]);
-        };
-    </script>
 {% endblock %}

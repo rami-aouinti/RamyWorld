@@ -72,10 +72,16 @@ class Project
      */
     private $team;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="project")
+     */
+    private $tickets;
+
     public function __construct()
     {
         $this->tag = new ArrayCollection();
         $this->team = new ArrayCollection();
+        $this->tickets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +233,36 @@ class Project
     public function removeTeam(User $team): self
     {
         $this->team->removeElement($team);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTickets(): Collection
+    {
+        return $this->tickets;
+    }
+
+    public function addTicket(Ticket $ticket): self
+    {
+        if (!$this->tickets->contains($ticket)) {
+            $this->tickets[] = $ticket;
+            $ticket->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicket(Ticket $ticket): self
+    {
+        if ($this->tickets->removeElement($ticket)) {
+            // set the owning side to null (unless already changed)
+            if ($ticket->getProject() === $this) {
+                $ticket->setProject(null);
+            }
+        }
 
         return $this;
     }

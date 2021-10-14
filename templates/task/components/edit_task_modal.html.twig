@@ -1,0 +1,42 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-form-task-edit" tabindex="-1" role="dialog" aria-labelledby="modal-form-task-edit" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card card-plain">
+                    <div class="card-header pb-0 text-left">
+                        <h5 class="">New Task</h5>
+                        <p class="mb-0">Insert new task</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="myFormTaskEdit" role="form text-left">
+                            <input id="id" name="id" value="{{ task.id }}" type="hidden">
+                            <div class="input-group input-group-outline">
+                                <textarea class="form-control text-warning" name="description" rows="5" placeholder="Some description." spellcheck="false">{{ task.description }}</textarea>
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="date" name="startDate" value="{{ task.startDate|date("Y-m-d") }}" class="form-control text-warning" placeholder="Start Date">
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="date" name="endDate" value="{{ task.endDate|date('Y-m-d') }}" class="form-control text-warning" placeholder="End Date">
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <select class="form-control text-warning" name="ticket" id="exampleFormControlSelect1">
+                                    <option selected="selected">
+                                        {{ task.ticket.name }}
+                                    </option>
+                                    {% for ticket in app.user.tickets %}
+                                        <option>{{ ticket.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" onclick="editTask();" class="btn btn-round bg-gradient-warning btn-lg w-100 mt-4 mb-0">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

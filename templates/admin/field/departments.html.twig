@@ -1,0 +1,35 @@
+<div class="accordion-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="accordion" id="accordionRental">
+                    <div class="accordion-item mb-3">
+                        <h5 class="accordion-header" id="headingOne">
+                            <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Departments ({{ field.value|length }})
+                                <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                            </button>
+                        </h5>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
+                            {% for deparment in field.value %}
+                                {% set url = ea_url().setDashboard('App\\Controller\\Admin\\DashboardController').setController('App\\Controller\\Admin\\DepartmentCrudController').setAction('detail').setEntityId(deparment.id) %}
+                            <div class="accordion-body text-sm opacity-8">
+                                <li class="list-group-item">
+                                    <a href="{{ url }}">
+                                        {{ deparment.name }}
+                                    </a>
+                                </li>
+                            </div>
+                            {% else %}
+                                <li class="list-group-item">
+                                    No Department
+                                </li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Task index{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6 col-12 d-flex ms-auto">
+            <a href="{{ path('task_export' )}}" class="btn bg-gradient-dark ms-auto">
+                Export
+            </a>
+            <div class="dropleft ms-3">
+                <button class="btn bg-gradient-dark dropdown-toggle" type="button" id="dropdownImport" data-bs-toggle="dropdown" aria-expanded="false">
+                    Today
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownImport">
+                    <li><a class="dropdown-item" href="{{ path('task_search_date', {'date': 'yesterday'}) }}">Yesterday</a></li>
+                    <li><a class="dropdown-item" href="{{ path('task_search_date', {'date': 'week'}) }}">Last 7 days</a></li>
+                    <li><a class="dropdown-item" href="{{ path('task_search_date', {'date': 'month'}) }}">Last 30 days</a></li>
+                </ul>
+                <!-- Button trigger modal -->
+                <a type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#modal-form-task">
+                    New Task
+                </a>
+
+                {{ include('task/components/add_task_modal.html.twig') }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card mt-4">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-gradient-info shadow text-center border-radius-xl mt-n4 float-start">
+                        <i class="material-icons opacity-10">splitscreen</i>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mb-0">Tasks</h6>
+                        </div>
+                        {{ knp_pagination_filter(tasks, {
+                            't.id': 'Id',
+                            't.description': 'Date'
+                        }, {}, {}, 'layout/filter.html.twig') }}
+
+                        <div class="col-md-6 d-flex justify-content-end align-items-center">
+                            <small>23 - 30 March 2020</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ knp_pagination_sortable(tasks, 'Task Id', 't.id', {}, {}, '@KnpPaginator/Pagination/bootstrap_v5_md_sortable_link.html.twig') }}</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" {% if tasks.isSorted(['t.start_date']) %} class="sorted"{% endif %}>
+                                    {{ knp_pagination_sortable(tasks, 'Date', ['t.start_date'], {}, {}, '@KnpPaginator/Pagination/bootstrap_v5_md_sortable_link.html.twig') }}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ticket</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"{% if tasks.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(tasks, 'Description', 't.description', {}, {}, '@KnpPaginator/Pagination/bootstrap_v5_md_sortable_link.html.twig') }}</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for task in tasks %}
+                                <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <a href="{{ path('task_show', {'id': task.id }) }}"><h6 class="mb-0 text-xs"> ID : {{  task.id }}</h6></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0">{{ task.startDate|date('Y-m-d H:i') }} - {{ task.endDate|date('H:i') }}</p>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="badge badge-sm badge-success">Online</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-normal"> {{ task.description }}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <a class="btn btn-icon btn-2 btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+                                                <span class="btn-inner--icon"><i class="material-icons">visibility</i></span>
+                                            </a>
+                                            {{ include('task/components/show_task_modal.html.twig') }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a class="btn btn-icon btn-2 btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#modal-form-task-edit">
+                                                <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                                            </a>
+                                            {{ include('task/components/edit_task_modal.html.twig') }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ include('task/_delete_form.html.twig') }}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="navigation">
+                        {{ knp_pagination_render(tasks, 'layout/pagination.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function addNewTask() {
+            let url = `/task/new/task`
+            let donnees = {
+                "description": document.getElementById("myFormTask").elements["description"].value,
+                "startDate": document.getElementById("myFormTask").elements["startDate"].value,
+                "endDate": document.getElementById("myFormTask").elements["endDate"].value,
+                "ticket": document.getElementById("myFormTask").elements["ticket"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            xhr.onload = function(data) {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro')
+                }
+                else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form-task').modal('toggle');
+        }
+
+        function editTask() {
+            var id = document.getElementById("myFormTaskEdit").elements["id"].value;
+            let url = `/task/${id}/edit/task`
+            let donnees = {
+                "description": document.getElementById("myFormTaskEdit").elements["description"].value,
+                "startDate": document.getElementById("myFormTaskEdit").elements["startDate"].value,
+                "endDate": document.getElementById("myFormTaskEdit").elements["endDate"].value,
+                "ticket": document.getElementById("myFormTaskEdit").elements["ticket"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            xhr.onload = function(data) {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro')
+                }
+                else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form-task-edit').modal('toggle');
+        }
+    </script>
+{% endblock %}

@@ -95,6 +95,11 @@ class Profile
      */
     private ?User $user;
 
+    public function __toString(): string
+    {
+        return $this->firstname;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

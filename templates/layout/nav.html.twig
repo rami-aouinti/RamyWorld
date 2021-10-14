@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+<nav class="navbar navbar-main bg-gradient-dark navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
     <div class="container">
         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ path('home') }}">
             <img src="{{ asset('logo.jpg') }}" alt="profile_image" class="w-50 rounded-circle shadow-sm">
@@ -37,11 +37,11 @@
                                         <a href="{{ path('event_index') }}" class="dropdown-item border-radius-md">
                                             <span class="ps-2">My Calendar</span>
                                         </a>
-                                        <a href="{{ asset('dashboard/pages/dashboards/automotive.html') }}" class="dropdown-item border-radius-md">
-                                            <span class="ps-2">Automotive</span>
+                                        <a href="{{ path('project_dashboard') }}" class="dropdown-item border-radius-md">
+                                            <span class="ps-2">Dashboard Projects</span>
                                         </a>
-                                        <a href="{{ asset('dashboard/pages/dashboards/smart-home.html') }}" class="dropdown-item border-radius-md">
-                                            <span class="ps-2">Smart Home</span>
+                                        <a href="{{ path('task_index') }}" class="dropdown-item border-radius-md">
+                                            <span class="ps-2">Tasks</span>
                                         </a>
                                         <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                                             <i class="material-icons opacity-6 me-2 text-md">people</i>
@@ -740,7 +740,7 @@
                             </li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <a target="_blank" class="dropdown-item border-radius-md" href="{{ path('admin') }}">
                                     <div class="d-flex align-items-center py-1">
                                         <span class="material-icons">email</span>
                                         <div class="ms-2">

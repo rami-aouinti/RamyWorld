@@ -58,9 +58,6 @@ class ResumeController extends AbstractController
         MessageBusInterface $bus
     ): Response
     {
-        $bus->dispatch(new SmsNotification('Look! I created a message!'));
-        $this->dispatchMessage(new SmsNotification('Look! I created a message!'));
-
         $resume = new Resume();
         $resume->setUser($this->security->getUser());
         $form = $this->createForm(ResumeType::class, $resume);
@@ -107,7 +104,7 @@ class ResumeController extends AbstractController
                 'someDataToView' => 'Something'
             )
         );
-        $PDFService->generate($html);
+        $PDFService->generate($html, 'resume');
     }
 
     #[Route('/{id}', name: 'resume_show', methods: ['GET'])]

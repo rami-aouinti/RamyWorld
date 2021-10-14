@@ -1,0 +1,28 @@
+<form method="get" action="{{ action }}" enctype="application/x-www-form-urlencoded">
+
+    <div class="container">
+        <div class="row col-md-12">
+            <div class="col-sm">
+                {% if fields|length > 1 %}
+                    <select class="form-control text-warning" name="{{ filterFieldName }}">
+                        {% for field, label in fields %}
+                            <option value="{{ field }}"{% if selectedField == field %} selected="selected"{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input type="hidden" name="{{ filterFieldName }}" value="{{ fields|keys|first }}" />
+                {% endif %}
+            </div>
+            <div class="col-sm">
+                <input type="text" class="form-control text-warning" placeholder="Search" value="{{ selectedValue }}" name="{{ filterValueName }}" />
+
+            </div>
+            <div class="col-sm">
+                <button class="btn bg-gradient-dark">{{ options.button }}</button>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('task_index') }}" class="btn bg-gradient-primary">Reset</a>
+            </div>
+        </div>
+    </div>
+</form>

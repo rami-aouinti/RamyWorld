@@ -1,0 +1,34 @@
+<div class="accordion-1">
+    <div class="container">
+        <div class="row">
+            {% set url = ea_url().setDashboard('App\\Controller\\Admin\\DashboardController').setController('App\\Controller\\Admin\\ProfileCrudController').setAction('detail').setEntityId(field.value.id) %}
+            <div class="accordion-body text-sm opacity-8">
+                <li class="list-group-item">
+                    <a href="{{ url }}">
+                        {{ field.value.title }} {{ field.value.firstname }} {{ field.value.lastname }}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <p>
+                        About me : {{ field.value.description }}
+                    </p>
+                    <p>
+                        Address :  {{ field.value.street }} {{ field.value.streetNumber }} , {{ field.value.postcode }} {{ field.value.state }} {{ field.value.country }}
+                    </p>
+                    <p>
+                        Facebook : {{ field.value.facebook }}
+                    </p>
+                    <p>
+                        Twitter : {{ field.value.twitter }}
+                    </p>
+                    <p>
+                        Instagram : {{ field.value.instagram }}
+                    </p>
+                    <p>
+                        Phone : {{ field.value.mobile }}
+                    </p>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>

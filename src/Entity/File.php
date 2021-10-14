@@ -35,6 +35,11 @@ class File
      */
     private $message;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Ticket::class, inversedBy="files")
+     */
+    private $ticket;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +77,18 @@ class File
     public function setMessage(?Message $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getTicket(): ?Ticket
+    {
+        return $this->ticket;
+    }
+
+    public function setTicket(?Ticket $ticket): self
+    {
+        $this->ticket = $ticket;
 
         return $this;
     }

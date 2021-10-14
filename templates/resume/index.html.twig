@@ -3,33 +3,241 @@
 {% block title %}Resume index{% endblock %}
 
 {% block body %}
-    <h1>Resume index</h1>
+    <div class="row">
+        {{ include('resume/components/education.html.twig') }}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Skills</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Template</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for resume in resumes %}
-            <tr>
-                <td>{{ resume.id }}</td>
-                <td>{{ resume.template }}</td>
-                <td>
-                    <a href="{{ path('resume_show', {'id': resume.id}) }}">show</a>
-                    <a href="{{ path('resume_edit', {'id': resume.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
 
-    <a href="{{ path('resume_new') }}">Create new</a>
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-lg">
+                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Experiences</span>
+                <div class="card-header text-center pt-4 pb-3">
+                    <h1 class="font-weight-bold mt-2">
+                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">2 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">20GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                        Join
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Languages</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-lg">
+                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Projects</span>
+                <div class="card-header text-center pt-4 pb-3">
+                    <h1 class="font-weight-bold mt-2">
+                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">2 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">20GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">done</i>
+                        <span class="ps-3">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto">remove</i>
+                        <span class="ps-3">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                        Join
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-gradient-dark shadow-lg">
+                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Hobbies</span>
+                <div class="card-header text-center pt-4 pb-3 bg-transparent">
+                    <h1 class="font-weight-bold mt-2 text-white">
+                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
+                    </h1>
+                </div>
+                <div class="card-body text-lg-start text-center pt-0">
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">10 team members</span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">40GB Cloud storage </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Integration help </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">done</i>
+                        <span class="ps-3 text-white">Sketch Files </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">API Access </span>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                        <i class="material-icons my-auto text-white">remove</i>
+                        <span class="ps-3 text-white">Complete documentation </span>
+                    </div>
+
+                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                        Try Premium
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

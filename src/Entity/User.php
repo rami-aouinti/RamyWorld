@@ -127,6 +127,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $events;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Department::class, inversedBy="users")
+     */
+    private $deparment;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Ticket::class, mappedBy="members")
+     */
+    private $tickets;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="user")
+     */
+    private $tasks;
+
     public function __toString(): string
     {
         return $this->email;
@@ -145,6 +160,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->hobbies = new ArrayCollection();
         $this->resumes = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->deparment = new ArrayCollection();
+        $this->tickets = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -642,6 +660,87 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($event->getUser() === $this) {
                 $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Department[]
+     */
+    public function getDeparment(): Collection
+    {
+        return $this->deparment;
+    }
+
+    public function addDeparment(Department $deparment): self
+    {
+        if (!$this->deparment->contains($deparment)) {
+            $this->deparment[] = $deparment;
+        }
+
+        return $this;
+    }
+
+    public function removeDeparment(Department $deparment): self
+    {
+        $this->deparment->removeElement($deparment);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTickets(): Collection
+    {
+        return $this->tickets;
+    }
+
+    public function addTicket(Ticket $ticket): self
+    {
+        if (!$this->tickets->contains($ticket)) {
+            $this->tickets[] = $ticket;
+            $ticket->addMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicket(Ticket $ticket): self
+    {
+        if ($this->tickets->removeElement($ticket)) {
+            $ticket->removeMember($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Task[]
+     */
+    public function getTasks(): Collection
+    {
+        return $this->tasks;
+    }
+
+    public function addTask(Task $task): self
+    {
+        if (!$this->tasks->contains($task)) {
+            $this->tasks[] = $task;
+            $task->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTask(Task $task): self
+    {
+        if ($this->tasks->removeElement($task)) {
+            // set the owning side to null (unless already changed)
+            if ($task->getUser() === $this) {
+                $task->setUser(null);
             }
         }
 

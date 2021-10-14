@@ -133,6 +133,12 @@
     "jakeasmith/http_build_url": {
         "version": "1.0.1"
     },
+    "knplabs/knp-components": {
+        "version": "v3.1.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.7.0"
+    },
     "knpuniversity/oauth2-client-bundle": {
         "version": "1.20",
         "recipe": {
