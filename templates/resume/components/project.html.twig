@@ -19,31 +19,41 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Skill</label>
+                                    <label class="form-label">Name</label>
                                     <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group input-group-outline my-3">
-                                    <select class="form-control" name="level" id="exampleFormControlSelect1">
-                                        <option>10%</option>
-                                        <option>20%</option>
-                                        <option>30%</option>
-                                        <option>40%</option>
-                                        <option>50%</option>
-                                        <option>60%</option>
-                                        <option>70%</option>
-                                        <option>80%</option>
-                                        <option>90%</option>
-                                        <option>100%</option>
-                                    </select>
+                                    <label class="form-label">Repository</label>
+                                    <input type="url" name="repository" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" class="form-control"></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Start</label>
+                                    <input type="datetime-local" name="startDate" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>End</label>
+                                    <input type="datetime-local" name="endDate" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
                                 <button type="button" onclick="newProject()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
                                     Add
                                 </button>
@@ -52,6 +62,27 @@
                     </form>
                 </div>
             </div>
+            {% for project in projects %}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ project.startDate|date('m-Y') }} - {{ project.endDate|date('m-Y') }}
+                    </div>
+                    <div class="col-md-6">
+                      <a target="_blank" href="{{ project.repository }}"> {{ project.name }} </a> {{ project.description }}
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-icon btn-warning btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-icon btn-danger btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">delete</i></span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            <project></project>
         </div>
     </div>
 </div>

@@ -51,10 +51,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-10">
-                            </div>
-                            <div class="col-md-2">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
                                 <button type="button" onclick="newEducation()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
                                     Add
                                 </button>
@@ -63,6 +61,27 @@
                     </form>
                 </div>
             </div>
+            {% for education in educations %}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ education.startDate|date('m-Y') }} - {{ education.endDate|date('m-Y') }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ education.grad }} {{ education.school }}
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-icon btn-warning btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-icon btn-danger btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">delete</i></span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            <education></education>
         </div>
     </div>
 </div>

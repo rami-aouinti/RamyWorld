@@ -17,41 +17,39 @@
                 <div id="hobby" class="accordion-collapse-hobby collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
                     <form id="hobbyForm">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Skill</label>
+                                    <label class="form-label">Hobby</label>
                                     <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-group-outline my-3">
-                                    <select class="form-control" name="level" id="exampleFormControlSelect1">
-                                        <option>10%</option>
-                                        <option>20%</option>
-                                        <option>30%</option>
-                                        <option>40%</option>
-                                        <option>50%</option>
-                                        <option>60%</option>
-                                        <option>70%</option>
-                                        <option>80%</option>
-                                        <option>90%</option>
-                                        <option>100%</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <button type="button" onclick="newHobby()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
-                                    Add
+                                    <span class="btn-inner--icon"><i class="material-icons">add</i></span>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            {% for hobby in hobbies %}
+                <div class="row">
+                    <div class="col-md-8">
+                        {{ hobby.name }}
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-icon btn-warning btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-icon btn-danger btn-sm" type="button">
+                            <span class="btn-inner--icon"><i class="material-icons">delete</i></span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            <hobby></hobby>
         </div>
     </div>
 </div>
