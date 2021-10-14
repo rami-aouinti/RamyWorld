@@ -1,28 +1,75 @@
-<!--single form panel-->
-<div class="multisteps-form__panel" data-animation="FadeIn">
-    <div class="row text-center mt-4">
-        <div class="col-10 mx-auto">
-            <h5 class="font-weight-normal">Contact</h5>
+<div class="col-md-4 mb-4">
+    <div class="card bg-gradient-dark shadow-lg">
+        <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Skills</span>
+        <div class="card-header text-center pt-4 pb-3 bg-transparent">
         </div>
-    </div>
-    <div class="multisteps-form__content">
-        <div class="row mt-4">
-            <div class="input-group input-group-outline my-3">
-                <input type="tel" name="mobile" value="{{ app.user.profile.mobile }}"  class="form-control text-warning" placeholder="Phone">
+        <div class="card-body text-lg-start text-center pt-0">
+            {% for skill in skills %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ skill.name }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="progress-wrapper">
+                            <div class="progress-info">
+                                <div class="progress-percentage">
+                                    <span class="text-sm font-weight-normal">{{ skill.level }}%</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ skill.level }}%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <skill></skill>
+            <div class="accordion-item mb-3">
+                <h5 class="accordion-header" id="headingOne">
+                    <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add New Skill
+                        <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                        <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                    </button>
+                </h5>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
+                    <form id="skillForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Skill</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <select class="form-control" name="level" id="exampleFormControlSelect1">
+                                        <option>10%</option>
+                                        <option>20%</option>
+                                        <option>30%</option>
+                                        <option>40%</option>
+                                        <option>50%</option>
+                                        <option>60%</option>
+                                        <option>70%</option>
+                                        <option>80%</option>
+                                        <option>90%</option>
+                                        <option>100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" onclick="newSkill()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="input-group input-group-outline my-3">
-                <input type="url" name="facebook" value="{{ app.user.profile.facebook }}" class="form-control text-warning" placeholder="Facebook">
-            </div>
-            <div class="input-group input-group-outline my-3">
-                <input type="url" name="twitter" value="{{ app.user.profile.twitter }}" class="form-control text-warning" placeholder="Twitter">
-            </div>
-            <div class="input-group input-group-outline my-3">
-                <input type="url" name="instagram" value="{{ app.user.profile.instagram }}" class="form-control text-warning" placeholder="Instagram">
-            </div>
-        </div>
-        <div class="button-row d-flex mt-4">
-            <button class="btn btn-outline-dark mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
         </div>
     </div>
 </div>

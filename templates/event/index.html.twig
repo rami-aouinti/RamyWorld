@@ -203,7 +203,6 @@
         })
         calendar.render();
         function addNewEvent() {
-            console.log(document.getElementById("myForm").elements["type"].value)
             let url = `/api/new`
             let donnees = {
                 "title": document.getElementById("myForm").elements["title"].value,
