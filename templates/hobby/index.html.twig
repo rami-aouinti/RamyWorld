@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobby index{% endblock %}
+
+{% block body %}
+    <h1>Hobby index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hobby in hobbies %}
+            <tr>
+                <td>{{ hobby.id }}</td>
+                <td>{{ hobby.name }}</td>
+                <td>{{ hobby.createdAt ? hobby.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ hobby.updatedAt ? hobby.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('hobby_show', {'id': hobby.id}) }}">show</a>
+                    <a href="{{ path('hobby_edit', {'id': hobby.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hobby_new') }}">Create new</a>
+{% endblock %}

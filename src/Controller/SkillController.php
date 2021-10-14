@@ -37,7 +37,7 @@ class SkillController extends AbstractController
     #[Route('/new', name: 'skill_new', methods: ['GET','POST'])]
     public function new(Request $request): Response
     {
-        // On récupère les données
+        // Collect data
         $donnees = json_decode($request->getContent());
 
         if(isset($donnees->name) && !empty($donnees->name))
@@ -47,19 +47,19 @@ class SkillController extends AbstractController
             $code = 201;
             $level = substr($donnees->level, 0, 2);
 
-            // On hydrate l'objet avec les données
+            // Save in Database
             $skill->setName($donnees->name);
             $skill->setLevel((int)$level);
             $em = $this->getDoctrine()->getManager();
             $em->persist($skill);
             $em->flush();
 
-            // On retourne le code
+            // Return Code
             return new JsonResponse([
                 'status' => $code
             ]);
         }else{
-            // Les données sont incomplètes
+            // Incomplete Data
             return new Response('Données incomplètes', 404);
         }
     }

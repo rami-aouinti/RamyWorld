@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Education{% endblock %}
+
+{% block body %}
+    <h1>Education</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ education.id }}</td>
+            </tr>
+            <tr>
+                <th>School</th>
+                <td>{{ education.school }}</td>
+            </tr>
+            <tr>
+                <th>Grad</th>
+                <td>{{ education.grad }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ education.description }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ education.startDate ? education.startDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End_date</th>
+                <td>{{ education.endDate ? education.endDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ education.createdAt ? education.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ education.updatedAt ? education.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('education_index') }}">back to list</a>
+
+    <a href="{{ path('education_edit', {'id': education.id}) }}">edit</a>
+
+    {{ include('education/_delete_form.html.twig') }}
+{% endblock %}

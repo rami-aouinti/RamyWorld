@@ -1,19 +1,57 @@
-<!--single form panel-->
-<div class="multisteps-form__panel" data-animation="FadeIn">
-    <div class="row text-center mt-4">
-        <div class="col-10 mx-auto">
-            <h5 class="font-weight-normal">Description</h5>
+<div class="col-md-12 mb-4">
+    <div class="card shadow-lg">
+        <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Projects</span>
+        <div class="card-header text-center pt-4 pb-3">
+            <h1 class="font-weight-bold mt-2">
+            </h1>
         </div>
-    </div>
-    <div class="multisteps-form__content">
-        <div class="input-group input-group-dynamic">
-                                                <textarea   name="description" class="form-control multisteps-form__input text-warning" rows="4" cols="50" placeholder="Description">
-                                                    {{ app.user.profile.description }}
-                                                </textarea>
-        </div>
-        <div class="button-row d-flex mt-4">
-            <button class="btn btn-outline-dark mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+        <div class="card-body text-lg-start text-center pt-0">
+            <div class="accordion-item mb-3">
+                <h5 class="accordion-header" id="headingOne">
+                    <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#project" aria-expanded="false" aria-controls="project">
+                        Add New Project
+                        <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                        <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                    </button>
+                </h5>
+                <div id="project" class="accordion-collapse-project collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
+                    <form id="projectForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Skill</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <select class="form-control" name="level" id="exampleFormControlSelect1">
+                                        <option>10%</option>
+                                        <option>20%</option>
+                                        <option>30%</option>
+                                        <option>40%</option>
+                                        <option>50%</option>
+                                        <option>60%</option>
+                                        <option>70%</option>
+                                        <option>80%</option>
+                                        <option>90%</option>
+                                        <option>100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" onclick="newProject()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

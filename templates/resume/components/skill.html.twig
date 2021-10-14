@@ -1,38 +1,18 @@
-<div class="col-md-4 mb-4">
+<div class="col-md-12 mb-4">
     <div class="card bg-gradient-dark shadow-lg">
         <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Skills</span>
         <div class="card-header text-center pt-4 pb-3 bg-transparent">
         </div>
         <div class="card-body text-lg-start text-center pt-0">
-            {% for skill in skills %}
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ skill.name }}
-                    </div>
-                    <div class="col-md-6">
-                        <div class="progress-wrapper">
-                            <div class="progress-info">
-                                <div class="progress-percentage">
-                                    <span class="text-sm font-weight-normal">{{ skill.level }}%</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ skill.level }}%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <skill></skill>
             <div class="accordion-item mb-3">
                 <h5 class="accordion-header" id="headingOne">
-                    <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#skill" aria-expanded="false" aria-controls="skill">
                         Add New Skill
                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                     </button>
                 </h5>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
+                <div id="skill" class="accordion-collapse-skill collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
                     <form id="skillForm">
                         <div class="row">
                             <div class="col-md-6">
@@ -70,6 +50,26 @@
                     </form>
                 </div>
             </div>
+            {% for skill in skills %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ skill.name }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="progress-wrapper">
+                            <div class="progress-info">
+                                <div class="progress-percentage">
+                                    <span class="text-sm font-weight-normal">{{ skill.level }}%</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ skill.level }}%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <skill></skill>
         </div>
     </div>
 </div>

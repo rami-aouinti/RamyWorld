@@ -4,194 +4,33 @@
 
 {% block body %}
     <div class="row">
-        {{ include('resume/components/education.html.twig') }}
-        {{ include('resume/components/skill.html.twig') }}
-    </div>
-    <div class="row">
         <div class="col-md-8 mb-4">
-            <div class="card shadow-lg">
-                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Experiences</span>
-                <div class="card-header text-center pt-4 pb-3">
-                    <h1 class="font-weight-bold mt-2">
-                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
-                    </h1>
-                </div>
-                <div class="card-body text-lg-start text-center pt-0">
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">2 team members</span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">20GB Cloud storage </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">Integration help </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">Sketch Files </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">API Access </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">Complete documentation </span>
-                    </div>
-
-                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
-                        Join
-                        <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
+            {{ include('resume/components/education.html.twig') }}
+            {{ include('resume/components/experience.html.twig') }}
+            {{ include('resume/components/project.html.twig') }}
         </div>
         <div class="col-md-4 mb-4">
-            <div class="card bg-gradient-dark shadow-lg">
-                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Languages</span>
-                <div class="card-header text-center pt-4 pb-3 bg-transparent">
-                    <h1 class="font-weight-bold mt-2 text-white">
-                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
-                    </h1>
-                </div>
-                <div class="card-body text-lg-start text-center pt-0">
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">10 team members</span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">40GB Cloud storage </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">Integration help </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">Sketch Files </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">remove</i>
-                        <span class="ps-3 text-white">API Access </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">remove</i>
-                        <span class="ps-3 text-white">Complete documentation </span>
-                    </div>
-
-                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
-                        Try Premium
-                        <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
+            {{ include('resume/components/skill.html.twig') }}
+            {{ include('resume/components/language.html.twig') }}
+            {{ include('resume/components/hobby.html.twig') }}
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 mb-4">
-            <div class="card shadow-lg">
-                <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Projects</span>
-                <div class="card-header text-center pt-4 pb-3">
-                    <h1 class="font-weight-bold mt-2">
-                        <small class="text-lg mb-auto">$</small>59<small class="text-lg">/mo</small>
-                    </h1>
-                </div>
-                <div class="card-body text-lg-start text-center pt-0">
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">2 team members</span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">20GB Cloud storage </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">done</i>
-                        <span class="ps-3">Integration help </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">Sketch Files </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">API Access </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto">remove</i>
-                        <span class="ps-3">Complete documentation </span>
-                    </div>
-
-                    <a href="javascript:;" class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
-                        Join
-                        <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <button class="btn btn-icon btn-2 btn-success" type="button">
+                    <span class="btn-inner--icon"><i class="material-icons">save</i></span>
+                </button>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card bg-gradient-dark shadow-lg">
-                <span class="badge rounded-pill bg-primary w-30 mt-n2 mx-auto">Hobbies</span>
-                <div class="card-header text-center pt-4 pb-3 bg-transparent">
-                    <h1 class="font-weight-bold mt-2 text-white">
-                        <small class="text-lg mb-auto">$</small>89<small class="text-lg">/mo</small>
-                    </h1>
-                </div>
-                <div class="card-body text-lg-start text-center pt-0">
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">10 team members</span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">40GB Cloud storage </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">Integration help </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">done</i>
-                        <span class="ps-3 text-white">Sketch Files </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">remove</i>
-                        <span class="ps-3 text-white">API Access </span>
-                    </div>
-
-                    <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                        <i class="material-icons my-auto text-white">remove</i>
-                        <span class="ps-3 text-white">Complete documentation </span>
-                    </div>
-
-                    <a href="javascript:;" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
-                        Try Premium
-                        <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
+            <div class="col-md-auto">
+                <button class="btn btn-icon btn-2 btn-warning" type="button">
+                    <span class="btn-inner--icon"><i class="material-icons">save_alt</i></span>
+                </button>
+            </div>
+            <div class="col-md-auto">
+                <button class="btn btn-icon btn-2 btn-primary" type="button">
+                    <span class="btn-inner--icon"><i class="material-icons">visibility</i></span>
+                </button>
             </div>
         </div>
     </div>
@@ -212,8 +51,9 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     successSwal('Saved Bro');
+                    $("div.accordion-collapse-skill").collapse("hide");
                     $( "skill" )
-                        .html(
+                        .append(
                             "<div class='row'>" +
                             "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
                             "<div class='col-md-6'>" +
@@ -221,12 +61,180 @@
                             "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
                             "</div>" + "</div>" +
                             "</div>" );
+                    document.getElementById("skillForm").reset();
                 }
                 else {
                     successSwal('Not Saved Bro');
-                    console.log('np test');
-                    $( "skill" )
-                        .html( "<p>All new content. <em>You bet!</em></p>" );
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+        }
+
+        function newHobby() {
+            let url = `/hobby/new`
+            let donnees = {
+                "name": document.getElementById("hobbyForm").elements["name"].value,
+                "level": document.getElementById("hobbyForm").elements["level"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            let levelValue = document.getElementById("skillForm").elements["level"].value;
+            let level = parseInt(levelValue.substring(0, 2));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro');
+                    $("div.accordion-collapse-hobby").collapse("hide");
+                    $( "hobby" )
+                        .append(
+                            "<div class='row'>" +
+                            "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
+                            "<div class='col-md-6'>" +
+                            "<div class='progress-wrapper'>" + "<div class='progress-info'>" + "<span class='progress-percentage'>" + "<span class='text-sm font-weight-normal'>" + document.getElementById("skillForm").elements["level"].value + "</span>" + "</div>" + "<div class='progress'>" +
+                            "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
+                            "</div>" + "</div>" +
+                            "</div>" );
+                    document.getElementById("hobbyForm").reset();
+                }
+                else {
+                    successSwal('Not Saved Bro');
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+        }
+
+        function newProject() {
+            let url = `/work/new`
+            let donnees = {
+                "name": document.getElementById("workForm").elements["name"].value,
+                "level": document.getElementById("workForm").elements["level"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            let levelValue = document.getElementById("skillForm").elements["level"].value;
+            let level = parseInt(levelValue.substring(0, 2));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro');
+                    $("div.accordion-collapse-project").collapse("hide");
+                    $( "project" )
+                        .append(
+                            "<div class='row'>" +
+                            "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
+                            "<div class='col-md-6'>" +
+                            "<div class='progress-wrapper'>" + "<div class='progress-info'>" + "<span class='progress-percentage'>" + "<span class='text-sm font-weight-normal'>" + document.getElementById("skillForm").elements["level"].value + "</span>" + "</div>" + "<div class='progress'>" +
+                            "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
+                            "</div>" + "</div>" +
+                            "</div>" );
+                    document.getElementById("projectForm").reset();
+                }
+                else {
+                    successSwal('Not Saved Bro');
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+        }
+
+        function newLanguage() {
+            let url = `/language/new`
+            let donnees = {
+                "name": document.getElementById("languageForm").elements["name"].value,
+                "level": document.getElementById("languageForm").elements["level"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            let levelValue = document.getElementById("skillForm").elements["level"].value;
+            let level = parseInt(levelValue.substring(0, 2));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro');
+                    $("div.accordion-collapse-language").collapse("hide");
+                    $( "language" )
+                        .append(
+                            "<div class='row'>" +
+                            "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
+                            "<div class='col-md-6'>" +
+                            "<div class='progress-wrapper'>" + "<div class='progress-info'>" + "<span class='progress-percentage'>" + "<span class='text-sm font-weight-normal'>" + document.getElementById("skillForm").elements["level"].value + "</span>" + "</div>" + "<div class='progress'>" +
+                            "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
+                            "</div>" + "</div>" +
+                            "</div>" );
+                    document.getElementById("languageForm").reset();
+                }
+                else {
+                    successSwal('Not Saved Bro');
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+        }
+
+        function newExperience() {
+            let url = `/experience/new`
+            let donnees = {
+                "name": document.getElementById("experienceForm").elements["name"].value,
+                "level": document.getElementById("experienceForm").elements["level"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            let levelValue = document.getElementById("skillForm").elements["level"].value;
+            let level = parseInt(levelValue.substring(0, 2));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro');
+                    $("div.accordion-collapse-experience").collapse("hide");
+                    $( "experience" )
+                        .append(
+                            "<div class='row'>" +
+                            "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
+                            "<div class='col-md-6'>" +
+                            "<div class='progress-wrapper'>" + "<div class='progress-info'>" + "<span class='progress-percentage'>" + "<span class='text-sm font-weight-normal'>" + document.getElementById("skillForm").elements["level"].value + "</span>" + "</div>" + "<div class='progress'>" +
+                            "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
+                            "</div>" + "</div>" +
+                            "</div>" );
+                    document.getElementById("experienceForm").reset();
+                }
+                else {
+                    successSwal('Not Saved Bro');
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+        }
+
+        function newEducation() {
+            let url = `/education/new`
+            let donnees = {
+                "name": document.getElementById("educationForm").elements["name"].value,
+                "level": document.getElementById("educationForm").elements["level"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            let levelValue = document.getElementById("skillForm").elements["level"].value;
+            let level = parseInt(levelValue.substring(0, 2));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro');
+                    $("div.accordion-collapse-education").collapse("hide");
+                    $( "education" )
+                        .append(
+                            "<div class='row'>" +
+                            "<div class='col-md-6'>" + document.getElementById("skillForm").elements["name"].value + "</div>" +
+                            "<div class='col-md-6'>" +
+                            "<div class='progress-wrapper'>" + "<div class='progress-info'>" + "<span class='progress-percentage'>" + "<span class='text-sm font-weight-normal'>" + document.getElementById("skillForm").elements["level"].value + "</span>" + "</div>" + "<div class='progress'>" +
+                            "<div class='progress-bar bg-gradient-primary' role='progressbar' aria-valuenow='" + level   + "aria-valuemin=0' aria-valuemax='100' style='width: " + level + "%;'>" +  "</div>" + "</div>" +
+                            "</div>" + "</div>" +
+                            "</div>" );
+                    document.getElementById("educationForm").reset();
+                }
+                else {
+                    successSwal('Not Saved Bro');
                 }
             };
             xhr.open("POST", url)

@@ -1,57 +1,68 @@
-<div class="col-md-8 mb-4">
+<div class="col-md-12 mb-4">
     <div class="card shadow-lg">
         <span class="badge rounded-pill bg-light text-dark w-30 mt-n2 mx-auto">Education</span>
         <div class="card-header text-center pt-4 pb-3">
 
         </div>
         <div class="card-body text-lg-start text-center pt-0">
-            <form>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">School</label>
-                            <input type="text" class="form-control">
+            <div class="accordion-item mb-3">
+                <h5 class="accordion-header" id="headingOne">
+                    <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#education" aria-expanded="false" aria-controls="education">
+                        Add New Education
+                        <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                        <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                    </button>
+                </h5>
+                <div id="education" class="accordion-collapse-education collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
+                    <form id="educationForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">School</label>
+                                    <input type="text" name="school" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Grad</label>
+                                    <input type="text" name="grad" class="form-control">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Grad</label>
-                            <input type="text" class="form-control">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Start</label>
+                                    <input type="datetime-local" name="startDate" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>End</label>
+                                    <input type="datetime-local" name="endDate" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" onclick="newEducation()" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static my-3">
-                            <label>Start</label>
-                            <input type="datetime-local" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static my-3">
-                            <label>End</label>
-                            <input type="datetime-local" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                    </div>
-                    <div class="col-md-2">
-                        <a href="javascript:;" class="btn btn-icon bg-gradient-primary mt-3 mb-0">
-                            New
-                        </a>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

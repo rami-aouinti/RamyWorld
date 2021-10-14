@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Work index{% endblock %}
+
+{% block body %}
+    <h1>Work index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Repository</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for work in works %}
+            <tr>
+                <td>{{ work.id }}</td>
+                <td>{{ work.name }}</td>
+                <td>{{ work.description }}</td>
+                <td>{{ work.repository }}</td>
+                <td>{{ work.startDate ? work.startDate|date('Y-m-d') : '' }}</td>
+                <td>{{ work.endDate ? work.endDate|date('Y-m-d') : '' }}</td>
+                <td>{{ work.createdAt ? work.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ work.updatedAt ? work.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('work_show', {'id': work.id}) }}">show</a>
+                    <a href="{{ path('work_edit', {'id': work.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('work_new') }}">Create new</a>
+{% endblock %}
