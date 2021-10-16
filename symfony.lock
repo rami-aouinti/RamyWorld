@@ -100,6 +100,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "dompdf/dompdf": {
+        "version": "v1.0.2"
+    },
     "easycorp/easyadmin-bundle": {
         "version": "3.0",
         "recipe": {
@@ -111,6 +114,9 @@
     },
     "egulias/email-validator": {
         "version": "3.1.1"
+    },
+    "fpdf/fpdf": {
+        "version": "1.83.2"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
@@ -139,6 +145,21 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v5.7.0"
     },
+    "knplabs/knp-snappy": {
+        "version": "v1.2.1"
+    },
+    "knplabs/knp-snappy-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c81bdcf4a9d4e7b1959071457f9608631865d381"
+        },
+        "files": [
+            "config/packages/knp_snappy.yaml"
+        ]
+    },
     "knpuniversity/oauth2-client-bundle": {
         "version": "1.20",
         "recipe": {
@@ -153,6 +174,9 @@
     },
     "laminas/laminas-code": {
         "version": "4.4.3"
+    },
+    "laminas/laminas-escaper": {
+        "version": "2.9.0"
     },
     "league/oauth2-client": {
         "version": "2.6.0"
@@ -190,6 +214,12 @@
     "phar-io/version": {
         "version": "3.1.0"
     },
+    "phenx/php-font-lib": {
+        "version": "0.5.2"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -198,6 +228,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.5.1"
+    },
+    "phpoffice/phpword": {
+        "version": "0.18.2"
     },
     "phpspec/prophecy": {
         "version": "1.14.0"
@@ -261,6 +294,9 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "sabberworm/php-css-parser": {
+        "version": "8.3.1"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -320,6 +356,12 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "setasign/fpdf": {
+        "version": "1.8.4"
+    },
+    "setasign/fpdi": {
+        "version": "v2.3.6"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",

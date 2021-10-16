@@ -23,9 +23,10 @@
                 </button>
             </div>
             <div class="col-md-auto">
-                <button class="btn btn-icon btn-2 btn-warning" type="button">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#choiceModal" class="btn btn-icon btn-2 btn-warning" >
                     <span class="btn-inner--icon"><i class="material-icons">save_alt</i></span>
                 </button>
+                {{ include('resume/components/choice_template.html.twig') }}
             </div>
             <div class="col-md-auto">
                 <button class="btn btn-icon btn-2 btn-primary" type="button">
