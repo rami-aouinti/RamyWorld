@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-form-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-normal" id="exampleModalLabel">New Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <form id="myFormPost">
+                <div class="modal-body">
+                    <div class="input-group input-group-outline mb-4">
+                        <label class="form-label">Title</label>
+                        <input name="title" type="text" class="form-control">
+                    </div>
+                    <div class="input-group input-group-outline mb-4">
+                        <textarea name="content" type="text" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button onclick="addNewPost();" type="button" class="btn bg-gradient-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

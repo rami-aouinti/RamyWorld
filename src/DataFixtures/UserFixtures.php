@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
+use App\Entity\Post;
 use App\Entity\Profile;
 use App\Entity\Project;
+use App\Entity\QuizCategory;
+use App\Entity\QuizQuestion;
+use App\Entity\QuizResponse;
 use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -65,6 +70,28 @@ class UserFixtures extends Fixture
             $profile->setUser($user);
             $manager->persist($profile);
 
+            for($s = 0; $s < 10; $s ++) {
+                $post = new Post();
+                $post->setTitle("post title number $s");
+                $post->setContent("post Content number $s");
+                $post->setAuthor($user);
+                $manager->persist($post);
+                for($d = 0; $d < 2; $d ++) {
+                    $comment = new Comment();
+                    $comment->setComment("Reply to Comment  $d");
+                    $comment->setAuthor($user);
+                    for ($e = 0; $e < 3; $e ++) {
+                        $replyComment = new Comment();
+                        $replyComment->setAuthor($user);
+                        $replyComment->setComment("this is Comment $e");
+                        $replyComment->addComment($comment);
+                        $replyComment->setPost($post);
+                        $manager->persist($replyComment);
+                    }
+                    $manager->persist($comment);
+                }
+            }
+
             for ($j = 1; $j <= 5; $j++) {
                 $project = new Project();
                 $project->setLogo($this->faker->word . ".png");
@@ -80,6 +107,29 @@ class UserFixtures extends Fixture
                 $manager->persist($project);
             }
         }
+
+        for( $i = 0; $i < 3; $i++) {
+            $category = new QuizCategory();
+            $category->setName("category $i");
+
+            for($j = 0; $j < 10; $j ++) {
+                $question = new QuizQuestion();
+                $question->setQuestion("This is Question $i $j");
+                $question->setLevel(1);
+
+                for($k = 0; $k < 4; $k++) {
+                    $answer = new QuizResponse();
+                    $answer->setResponse("Response number $k to question number $j ");
+                    $answer->setExacte(false);
+                    $answer->setQuizquestion($question);
+                    $manager->persist($answer);
+                }
+
+                $manager->persist($question);
+            }
+            $manager->persist($category);
+        }
+
         $manager->flush();
     }
 }

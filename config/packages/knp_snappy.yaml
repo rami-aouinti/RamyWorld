@@ -1,9 +1,9 @@
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     '%kernel.project_dir%/vendor/h4cc/wkhtmltopdf'
+        binary:     '%env(WKHTMLTOPDF_PATH)%'
         options:    []
     image:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltoimage
+        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
         options:    []

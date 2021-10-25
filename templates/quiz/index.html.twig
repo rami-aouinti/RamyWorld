@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuizController!{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <div class="card align-items-start">
+                <div class="card-body">
+                    <h3 class="text-white mb-0">Quiz</h3>
+                    <p class="text-white text-sm">Choose the category</p>
+                    <div id="category" class="row">
+                        {% for category in categories %}
+                            <div class="col-md-4">
+                                <button class="btn btn-lg btn-outline-primary border-2 px-6 py-5" onclick="chooseLevel({{ category.id }}, {{ scoreUser }})">
+                                    <i class="material-icons">
+                                        brush
+                                    </i>
+                                </button>
+                                <h6>{{ category.name }}</h6>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="level" class="row">
+
+                    </div>
+
+                    <div id="quiz" style="display: none">
+                        <div id="question" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var audio = new Audio('timer.mp3');
+        var questions;
+        var numberQuestion = 0;
+        var func;
+        var score = 0;
+        var category = 0;
+        var levelQuiz = 0;
+
+        function chooseLevel(id, maxLevel) {
+            document.getElementById("category").style.display = "none";
+            for (let i = 0; i <10; i++) {
+                var level = i + 1;
+
+                if(i >= maxLevel) {
+                    $( "#level" )
+                        .append( '<div class="col-md-4"> ' + '<button class="btn btn-lg btn-outline-primary border-2 px-6 py-5" onclick="chooseCategory('+ id + ',' + level +')" disabled="true">' +
+                            '<i class="material-icons"> brush</i></button>' +
+                            '<h6>Level ' + level + '</h6>' +
+                            ' </div><br>' );
+                } else {
+                    $( "#level" )
+                        .append( '<div class="col-md-4"> ' + '<button class="btn btn-lg btn-outline-success border-2 px-6 py-5" onclick="chooseCategory('+ id + ',' + level +')">' +
+                            '<i class="material-icons"> brush</i></button>' +
+                            '<h6>Level ' + level + '</h6>' +
+                            ' </div><br>' );
+                }
+            }
+        }
+
+        function chooseCategory(id, level) {
+            category = id;
+            levelQuiz = level;
+            let url = `/questions`
+            let data = {
+                "id": id,
+                "level": level
+            }
+            let xhr = new XMLHttpRequest;
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = xhr.responseText;
+                    var data = JSON.parse(response);
+                    questions = data['data'];
+                    let i = 0;
+                    do {
+                        i = i + 1;
+                        if(questions[i])
+                            numberQuestion = numberQuestion + 1;
+                    } while (i < 20);
+
+                    document.getElementById("level").style.display = "none";
+                    document.getElementById("quiz").style.display = "block";
+                    $( "#question" )
+                        .append( '<h4> In This quiz you have ' + numberQuestion +' Questions. Click to start Please </h4><br>' );
+                    $( "#question" )
+                        .append( '<button id="" onclick="addFirstQuestion(1)"' +
+                            ' class="btn btn-outline-white rounded-circle p-2 mx-2 mb-0"' +
+                            ' type="button" data-bs-toggle="tooltip"' +
+                            ' data-bs-placement="top"' +
+                            ' title=""' +
+                            ' data-bs-original-title="Play">' +
+                            ' Start </button><br>' );
+
+                }
+                else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(data))
+        }
+        function addFirstQuestion(k) {
+            let d= k + 1;
+            if( k > 1) {
+                for (i=0 ; i < 4; i++) {
+                    document.getElementById(i).style.display = 'none';
+                }
+            }
+
+            var question = questions[k].question[0];
+            $( "#question" )
+                .html( '<h3 id="question_distribute">'+ question['question'] + '</h3> <h5 id="demo"></h5> <br>' );
+
+            for ( var b = 0;  b < questions[k].question['response'][0].length; b++ ) {
+                var response = questions[k].question['response'][0][b];
+                var exactly;
+                if( response.exacte === true) {
+                    exactly = b;
+                }
+            }
+            for ( var i = 0;  i < questions[k].question['response'][0].length; i++ ) {
+                 response = questions[k].question['response'][0][i];
+                $( "#question" )
+                    .append( '<button id="' + i + '" onclick="answer(\'' + i + '\',\'' + response.exacte + '\',\'' + exactly + '\')" class="list-group-item">'+ response.response + '</button><br>' );
+            }
+            timerstart(1);
+            if (k < numberQuestion) {
+                $( "#question" )
+                    .append( '<button id="" onclick="addFirstQuestion(' + d + ')" class="btn btn-primary"> Next </button><br>' );
+            } else {
+                $( "#question" )
+                    .append( '<button id="" onclick="finish()" class="btn btn-primary"> Finish </button><br>' );
+            }
+        }
+        function answer(id, response, exactly) {
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(i).disabled = true;
+            }
+            audio.pause();
+            myStopFunction();
+            if(response === 'true') {
+                score = score + 1;
+                var x = document.getElementById(id);   // Get the element with id="demo"
+                x.style.borderColor = "green";
+            } else {
+                x = document.getElementById(id);   // Get the element with id="demo"
+                x.style.borderColor = "red";
+                var y = document.getElementById(exactly);   // Get the element with id="demo"
+                y.style.borderColor = "green";
+            }
+        }
+        function reload() {
+            location.reload(true);
+        }
+        function finish() {
+            let url = `/saveScore`;
+            let xhr = new XMLHttpRequest;
+            let data = {
+                "score": score,
+                "category": category,
+                "level": levelQuiz
+            }
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    $( "#question" )
+                        .html( '<h1> Thank You , your socre is '+ score + '/' + numberQuestion  +'</h1>' );
+                    $("#question")
+                        .append( '<button id="" onclick="reload()"' +
+                            ' class="btn btn-outline-white rounded-circle p-2 mx-2 mb-0"' +
+                            ' type="button" data-bs-toggle="tooltip"' +
+                            ' data-bs-placement="top"' +
+                            ' title=""' +
+                            ' data-bs-original-title="Play">' +
+                            ' Restart </button><br>' );
+                }
+            else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(data))
+        }
+        function timerstart(time){
+            var end = new Date();
+            end.setMinutes(end.getMinutes() + time); // timestamp
+            end = new Date(end); // Date object
+
+            func = setInterval( function(){
+
+                var now = new Date().getTime();
+                // Find the distance between now and the count down date
+                var distance = end - now;
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                // Display the result in the element with id="demo"
+
+                if (distance > 0) {
+                    document.getElementById("demo").innerHTML =  minutes + "m " + seconds + "s ";
+                }
+
+                if(distance/1000 > 0 && distance/1000 < 11 ) {
+                    audio.play();
+                }
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(func);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+        function myStopFunction() {
+            clearInterval(func);
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-outline-primary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#modal-form-post">
+                New Post
+            </button>
+            {{ include('post/components/new_modal.html.twig') }}
+            {% for post in posts %}
+                <div id="post"></div>
+                <div class="card card-frame">
+                    <div class="card-header d-flex">
+                        <p class="font-weight-normal my-auto">{{ post.author.email }}</p>
+                        <i class="material-icons position-relative ms-auto text-lg me-1 my-auto">time</i>
+                        <p class="text-sm my-auto"> {{ post.createdAt|date('Y-m-d') }}</p>
+                    </div>
+                    <div class="card-body">
+                        <h5>{{ post.title }}</h5>
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <div class="card-footer">
+                        {% for comment in post.comments %}
+                            <div class="card warning card-frame">
+                                <div class="card-body">
+                                    {{ comment.author.email }}:  {{ comment.comment }}
+                                </div>
+                            </div>
+                            <br>
+                            {% for replyComment in comment.comments %}
+                                <p>{{ replyComment.comment }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                        <form>
+                            <div class="input-group input-group-outline mb-4">
+                                <label class="form-label">Comment</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+            <div class="navigation">
+                {{ knp_pagination_render(posts, 'layout/pagination.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function addNewPost() {
+            let url = `/post/new/post`
+            let donnees = {
+                "title": document.getElementById("myFormPost").elements["title"].value,
+                "content": document.getElementById("myFormPost").elements["content"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = xhr.responseText;
+                    var data = JSON.parse(response);
+                    var post = data['data'];
+                    console.log(post);
+
+                    $( "#post" )
+                        .append( '<div class="card card-frame"><div class="card-header d-flex">' +
+                            '<p class="font-weight-normal my-auto">' + post.author.email + '</p>' +
+                            '<i class="material-icons position-relative ms-auto text-lg me-1 my-auto">date</i>' +
+                            '<p class="text-sm my-auto"> Now</p></div>' +
+                            '<div class="card-body">' +
+                            '<h5>' + post.title + '</h5><p>' + post.content+ '</p></div>' +
+                            '<div class="card-footer">' +
+                            '<form>' +
+                            '<div class="input-group input-group-outline mb-4">' +
+                            '<label class="form-label">Comment</label>' +
+                            '<input type="text" class="form-control">' +
+                            '</div></form></div></div><br>' );
+                }
+                else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("POST", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form-post').modal('toggle');
+        }
+
+        function editPost() {
+            var id = document.getElementById("myFormTaskEdit").elements["id"].value;
+            let url = `/task/${id}/edit/task`
+            let donnees = {
+                "description": document.getElementById("myFormTaskEdit").elements["description"].value,
+                "startDate": document.getElementById("myFormTaskEdit").elements["startDate"].value,
+                "endDate": document.getElementById("myFormTaskEdit").elements["endDate"].value,
+                "ticket": document.getElementById("myFormTaskEdit").elements["ticket"].value
+            }
+            let xhr = new XMLHttpRequest
+
+            xhr.onload = function(data) {
+                if (xhr.status === 200) {
+                    successSwal('Saved Bro')
+                }
+                else {
+                    successSwal('Not Saved Bro')
+                }
+            };
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
+            $('#modal-form-task-edit').modal('toggle');
+        }
+    </script>
+{% endblock %}

@@ -5,13 +5,15 @@ namespace App\Controller;
 use App\Repository\NotificationRepository;
 use App\Util\MonologDBHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Psr\Log\LoggerInterface;
 use Monolog\Logger;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HomeController extends AbstractController
 {
@@ -25,12 +27,16 @@ class HomeController extends AbstractController
         $this->security = $security;
     }
 
+    /**
+     * @param MailerInterface $mailer
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/home', name: 'home')]
-    public function index(MailerInterface $mailer): Response
+    public function index(MailerInterface $mailer, Request $request): Response
     {
-        //$logger->info('Information message');
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'controller_name' => 'HomeController'
         ]);
     }
 
